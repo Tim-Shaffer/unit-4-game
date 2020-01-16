@@ -119,4 +119,9 @@ $(document).ready(function() {
 
     });
 
+    $("#button-attack").on("click", function() {
+        console.log("recognized the click of the attack button");
+
+    });
+
 });
