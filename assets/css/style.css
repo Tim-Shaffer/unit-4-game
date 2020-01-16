@@ -1,6 +1,6 @@
 /* Body Content Styling */
 body {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-family: "Comic Sans MS", cursive, sans-serif;
     background-image: url("../images/360513.jpg"); 
     max-width: 100%;
     height: auto; 
@@ -14,6 +14,10 @@ body {
 
 .characters {
     border: 3px solid green;
+}
+
+#title {
+     text-align: right;
 }
 
 .your-character {
