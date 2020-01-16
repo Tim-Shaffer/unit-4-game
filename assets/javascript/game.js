@@ -50,7 +50,7 @@ $(document).ready(function() {
 
         charImg.attr('src', characters[i].Image);
 
-        charImg.addClass("img-thumbnail img-fluid images characters mx-1");
+        charImg.addClass("img-thumbnail img-fluid images characters p-2 mx-1");
 
         charImg.attr('id', characters[i].ID).attr("alt", characters[i].Name);
 
