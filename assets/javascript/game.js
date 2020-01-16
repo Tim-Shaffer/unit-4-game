@@ -35,87 +35,28 @@ var characters = [
 ];
 
 // Global Variables
-var attacker = {};
-var defender = {};
-// Booleans
-isAttackerLoaded = false;
-isDefenderLoaded = false;
-isGameReady = false;
-
-function loadCharacters() {
-
-    if (!isGameReady) {
-
-        // reset/clear any variables that may have been previously updated
-        attacker = {};
-        defender = {};
-    
-        for (var i = 0; i < characters.length; i++) {
-
-            // <img src="..." alt="..." class="img-thumbnail">
-            var charImg = $("<img>");
-
-            charImg.attr('src', characters[i].Image);
-
-            charImg.addClass("img-thumbnail img-fluid images characters p-2 mx-1");
-
-            charImg.attr('id', characters[i].ID).attr("alt", characters[i].Name);
-
-            $("#characters").append(charImg)
-
-        };
-
-        isGameReady = true;
-
-    }
-
-};
-
-function buildPlayer(str, opt=1) {
-    // Option 1 - (default) - Build the Attacker
-    // Option 2 - Build the Defender
-    if (opt === 2) {
-        // logic found in stack overflow
-        defender = characters.find(o => o.ID === str);
-
-        if (defender) {
-            return true;
-        }
-        else {
-            return false;
-        };
-    } else {
-        //default for any other value in option
-        // logic found in stack overflow
-        attacker = characters.find(o => o.ID === str);
-
-        if (attacker) {
-            return true;
-        }
-        else {
-            return false;
-        };
-
-    }; 
-
-};
-
-function attack() {
-    // console.log("recognized the click of the attack button");
-    var message = "";
-    if (!isAttackerLoaded) {
-        message = "No Attacker selected Yet to attack with!"
-    } else if (!isDefenderLoaded) {
-        message = "No Defender selected yet to attack!"
-    } else  {
-        message = "Attack is Ready!"
-    };
-    console.log(message);
-}
+var defenderLoaded = false;
 
 $(document).ready(function() {
 
-    loadCharacters();
+    // DYNAMICALLY CREATE PLAYER CHARACTER OPTIONS
+    // =================================================================================
+
+    // 1. Create a for-loop to iterate through the letters array.
+    for (var i = 0; i < characters.length; i++) {
+
+        // <img src="..." alt="..." class="img-thumbnail">
+        var charImg = $("<img>");
+
+        charImg.attr('src', characters[i].Image);
+
+        charImg.addClass("img-thumbnail img-fluid images characters p-2 mx-1");
+
+        charImg.attr('id', characters[i].ID).attr("alt", characters[i].Name);
+
+        $("#characters").append(charImg)
+
+    };
 
     // ATTACH ON-CLICK EVENTS TO "CHARACTER" BUTTONS
     // =================================================================================
@@ -133,16 +74,10 @@ $(document).ready(function() {
 
             // move the character clicked to the "your-character" area
             $("#" + imgID).appendTo("#your-character");
+            
             //  -------------------------------------------------------
             //  The above automatically moves the referenced item from the first area to the new area
             //  -------------------------------------------------------
-
-            //Build the attacker object with information from the selected character 
-            // isAttackerLoaded = buildAttacker(imgID);
-            isAttackerLoaded = buildPlayer(imgID);
-            console.log(attacker.Name);
-            console.log(attacker.HealthPoints);
-            console.log(attacker.AttackPower);
 
             // determine how many more characters are to be moved 
             // found logic to get the array here:  https://www.tutorialrepublic.com/faq/how-to-get-number-of-elements-in-a-div-using-jquery.php
@@ -159,7 +94,7 @@ $(document).ready(function() {
 
         } else if ($(this).hasClass("enemies")) {
             // console.log("recognized the click to select an enemy");
-            if ($(this).hasClass("enemies") && !isDefenderLoaded) {
+            if ($(this).hasClass("enemies") && !defenderLoaded) {
                 //  -------------------------------------------------------
                 // get the id of the clicked area and apply-
                 imgID = $(this).attr('id');
@@ -170,12 +105,7 @@ $(document).ready(function() {
                 // move the character clicked to the "your-character" area
                 $("#" + imgID).appendTo("#defender");
 
-                //Build the attacker object with information from the selected character 
-                // isDefenderLoaded = buildDefender(imgID);
-                isAttackerLoaded = buildPlayer(imgID, 2);
-                console.log(defender.Name);
-                console.log(defender.HealthPoints);
-                console.log(defender.CounterAttackPower);
+                defenderLoaded = true;
                 
                 //  -------------------------------------------------------
                 //  The above automatically moves the referenced item from the first area to the new area
@@ -186,12 +116,6 @@ $(document).ready(function() {
             // console.log("recognized the click of your character");
             // NULL function so that nothing happens
         }
-
-    });
-
-    $("#button-attack").on("click", function() {
-
-        attack();
 
     });
 

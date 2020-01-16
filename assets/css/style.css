@@ -7,8 +7,13 @@ body {
 }
 
 .images {
+    position: relative;
     width: 150px;
     height: 150px;
+}
+
+.characters {
+    border: 3px solid green;
 }
 
 .your-character {
