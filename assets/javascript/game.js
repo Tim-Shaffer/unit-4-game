@@ -30,7 +30,7 @@ $(document).ready(function() {
 
         charImg.attr('src', characters[i].Image);
 
-        charImg.addClass("img-thumbnail img-fluid characters");
+        charImg.addClass("img-thumbnail img-fluid images characters");
 
         charImg.attr('id', characters[i].Name).attr("alt", characters[i].Name);
 
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
     // ATTACH ON-CLICK EVENTS TO "CHARACTER" BUTTONS
     // =================================================================================
-    $(".letter").on("click", function() {
+    $(".images").on("click", function() {
         var btnID;
         // Make sure that the button currently has the "characters" class before doing anything so the action doesn't occur for other clicks.
         if ($(this).hasClass("characters")) {
