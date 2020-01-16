@@ -71,29 +71,32 @@ function loadCharacters() {
 
 };
 
-function buildAttacker(str) {
-    attacker = characters.find(o => o.ID === str);
+function buildPlayer(str, opt=1) {
+    // Option 1 - (default) - Build the Attacker
+    // Option 2 - Build the Defender
+    if (opt === 2) {
+        // logic found in stack overflow
+        defender = characters.find(o => o.ID === str);
 
-    if (attacker) {
-        return true;
-    }
-    else {
-        return false;
-    }
+        if (defender) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    } else {
+        //default for any other value in option
+        // logic found in stack overflow
+        attacker = characters.find(o => o.ID === str);
 
-};
+        if (attacker) {
+            return true;
+        }
+        else {
+            return false;
+        };
 
-function buildDefender(str) {
-    console.log("inside build defender");
-    console.log("looking for ID of:  "  + str);
-    defender = characters.find(o => o.ID === str);
-
-    if (defender) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    }; 
 
 };
 
@@ -135,7 +138,11 @@ $(document).ready(function() {
             //  -------------------------------------------------------
 
             //Build the attacker object with information from the selected character 
-            isAttackerLoaded = buildAttacker(imgID);
+            // isAttackerLoaded = buildAttacker(imgID);
+            isAttackerLoaded = buildPlayer(imgID);
+            console.log(attacker.Name);
+            console.log(attacker.HealthPoints);
+            console.log(attacker.AttackPower);
 
             // determine how many more characters are to be moved 
             // found logic to get the array here:  https://www.tutorialrepublic.com/faq/how-to-get-number-of-elements-in-a-div-using-jquery.php
@@ -164,7 +171,11 @@ $(document).ready(function() {
                 $("#" + imgID).appendTo("#defender");
 
                 //Build the attacker object with information from the selected character 
-                isDefenderLoaded = buildDefender(imgID);
+                // isDefenderLoaded = buildDefender(imgID);
+                isAttackerLoaded = buildPlayer(imgID, 2);
+                console.log(defender.Name);
+                console.log(defender.HealthPoints);
+                console.log(defender.CounterAttackPower);
                 
                 //  -------------------------------------------------------
                 //  The above automatically moves the referenced item from the first area to the new area
