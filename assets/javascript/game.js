@@ -37,7 +37,7 @@ $(document).ready(function() {
 
         charImg.addClass("img-thumbnail img-fluid images characters");
 
-        charImg.attr('id', characters[i].Name).attr("alt", characters[i].Name);
+        charImg.attr('id', characters[i].ID).attr("alt", characters[i].Name);
 
         $("#characters").append(charImg);
 
@@ -46,19 +46,19 @@ $(document).ready(function() {
     // ATTACH ON-CLICK EVENTS TO "CHARACTER" BUTTONS
     // =================================================================================
     $(".images").on("click", function() {
-        var btnID;
+        var imgID;
         // Make sure that the button currently has the "characters" class before doing anything so the action doesn't occur for other clicks.
         if ($(this).hasClass("characters")) {
             console.log("recognized the click from the character section");
             //  -------------------------------------------------------
             // get the id of the clicked area and apply-
-            btnID = $(this).attr('id');
+            imgID = $(this).attr('id');
 
             // remove the "character" from the selected item so it won't be impacted if clicked again!
-            $("#" + btnID).removeClass("characters").addClass("your-character");
+            $("#" + imgID).removeClass("characters").addClass("your-character");
 
             // move the character clicked to the "your-character" area
-            $("#" + btnID).appendTo("#your-character");
+            $("#" + imgID).appendTo("#your-character");
             
             //  -------------------------------------------------------
             //  The above automatically moves the referenced item from the first area to the new area
@@ -66,7 +66,7 @@ $(document).ready(function() {
 
             // determine how many more characters are to be moved 
             // found logic to get the array here:  https://www.tutorialrepublic.com/faq/how-to-get-number-of-elements-in-a-div-using-jquery.php
-            var matched = $("#characters button");
+            var matched = $("#characters img");
             for (i=0; i < matched.length; i++) {
                 // remove the "characters" and add a new class of "enemies"!
                 $("#" + matched[i].getAttribute("id")).removeClass("characters").addClass("enemies");
@@ -82,13 +82,13 @@ $(document).ready(function() {
             if ($(this).hasClass("enemies")) {
                 //  -------------------------------------------------------
                 // get the id of the clicked area and apply-
-                btnID = $(this).attr('id');
+                imgID = $(this).attr('id');
 
                 // remove the "character" from the selected item so it won't be impacted if clicked again!
-                $("#" + btnID).removeClass("enemies").addClass("defender");
+                $("#" + imgID).removeClass("enemies").addClass("defender");
 
                 // move the character clicked to the "your-character" area
-                $("#" + btnID).appendTo("#defender");
+                $("#" + imgID).appendTo("#defender");
                 
                 //  -------------------------------------------------------
                 //  The above automatically moves the referenced item from the first area to the new area
