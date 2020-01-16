@@ -22,6 +22,9 @@ var characters = [
     }
 ];
 
+// Global Variables
+var defenderLoaded = false;
+
 $(document).ready(function() {
 
     // DYNAMICALLY CREATE PLAYER CHARACTER OPTIONS
@@ -49,7 +52,7 @@ $(document).ready(function() {
         var imgID;
         // Make sure that the button currently has the "characters" class before doing anything so the action doesn't occur for other clicks.
         if ($(this).hasClass("characters")) {
-            console.log("recognized the click from the character section");
+            // console.log("recognized the click from the character section");
             //  -------------------------------------------------------
             // get the id of the clicked area and apply-
             imgID = $(this).attr('id');
@@ -78,8 +81,8 @@ $(document).ready(function() {
             $("#characters").empty();
 
         } else if ($(this).hasClass("enemies")) {
-            console.log("recognized the click to select an enemy");
-            if ($(this).hasClass("enemies")) {
+            // console.log("recognized the click to select an enemy");
+            if ($(this).hasClass("enemies") && !defenderLoaded) {
                 //  -------------------------------------------------------
                 // get the id of the clicked area and apply-
                 imgID = $(this).attr('id');
@@ -89,6 +92,8 @@ $(document).ready(function() {
 
                 // move the character clicked to the "your-character" area
                 $("#" + imgID).appendTo("#defender");
+
+                defenderLoaded = true;
                 
                 //  -------------------------------------------------------
                 //  The above automatically moves the referenced item from the first area to the new area
@@ -96,7 +101,7 @@ $(document).ready(function() {
             }
 
         } else if ($(this).hasClass("your-character")) {
-            console.log("recognized the click of your character");
+            // console.log("recognized the click of your character");
             // NULL function so that nothing happens
         }
 
