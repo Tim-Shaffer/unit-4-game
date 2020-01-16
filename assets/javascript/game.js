@@ -1,19 +1,24 @@
 // Use this array to dynamically create buttons on the screen.
-var characters = [ {
-    Name: "Darth Vader",
-    Image: "./assets/images/DV.jpg",
-    },
+var characters = [ 
     {
     Name: "Yoda",
     Image: "./assets/images/Yodatrur.png",
-    },
-    {
-    Name: "Darth Maul",
-    Image: "./assets/images/darth-maul.jpeg",
+    ID: "yoda"
     },
     {
     Name: "Rey",
     Image: "./assets/images/Rey.jpg",
+    ID: "rey"
+    },
+    {
+    Name: "Darth Vader",
+    Image: "./assets/images/DV.jpg",
+    ID: "darth-vader"
+    },
+    {
+    Name: "Darth Maul",
+    Image: "./assets/images/darth-maul.jpeg",
+    ID: "darth-maul"
     }
 ];
 
