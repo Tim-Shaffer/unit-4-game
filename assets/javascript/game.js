@@ -3,22 +3,34 @@ var characters = [
     {
     Name: "Yoda",
     Image: "./assets/images/Yodatrur.png",
-    ID: "yoda"
+    ID: "yoda",
+    HealthPoints: 120,
+    AttackPower: 8,
+    CounterAttackPower: 25
     },
     {
     Name: "Rey",
     Image: "./assets/images/Rey.jpg",
-    ID: "rey"
+    ID: "rey",
+    HealthPoints: 100,
+    AttackPower: 5,
+    CounterAttackPower: 5
     },
     {
     Name: "Darth Vader",
     Image: "./assets/images/DV.jpg",
-    ID: "darth-vader"
+    ID: "darth-vader",
+    HealthPoints: 150,
+    AttackPower: 6,
+    CounterAttackPower: 15
     },
     {
     Name: "Darth Maul",
     Image: "./assets/images/darth-maul.jpeg",
-    ID: "darth-maul"
+    ID: "darth-maul",
+    HealthPoints: 180,
+    AttackPower: 10,
+    CounterAttackPower: 20
     }
 ];
 

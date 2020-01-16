@@ -10,3 +10,18 @@ body {
     width: 150px;
     height: 150px;
 }
+
+.your-character {
+    border-color: blue;
+    background-color: blue;
+}
+
+.enemies {
+    border-color: red;
+    background-color: red;
+}
+
+.defender {
+    border-color: white;
+    background-color: black;
+}   
