@@ -41,6 +41,8 @@ var defender = {};
 isAttackerLoaded = false;
 isDefenderLoaded = false;
 isGameReady = false;
+// to increment Attack Power
+var attackPower = 0;
 
 function loadCharacters() {
 
@@ -103,14 +105,37 @@ function buildPlayer(str, opt=1) {
 function attack() {
     // console.log("recognized the click of the attack button");
     var message = "";
+    var msg2 = "";
+
     if (!isAttackerLoaded) {
         message = "No Attacker selected Yet to attack with!"
     } else if (!isDefenderLoaded) {
         message = "No Defender selected yet to attack!"
     } else  {
-        message = "Attack is Ready!"
+
+        attackPower += attacker.AttackPower;
+
+        defender.HealthPoints -= attackPower; 
+        message = "You attacked " + defender.Name + " for " + attackPower + " damage.";
+
+        if (defender.HealthPoints <= 0) {
+            message = "You have defeated " + defender.Name + ".  Choose another enemy to fight.";
+            $("#defender").empty();
+            isDefenderLoaded = false;
+        } else {
+            attacker.HealthPoints -= defender.CounterAttackPower;
+            if (attacker.HealthPoints <= 0 ) {
+                message = "You have been defeated...GAME OVER!!!"
+                isAttackerLoaded = false;
+                isGameReady = false;
+            } else {
+                msg2 = defender.Name + " attacked you back for " + defender.CounterAttackPower + " damage."
+            }
+        }      
+
     };
     console.log(message);
+    if (msg2 > "" ) {console.log(msg2)}
 }
 
 $(document).ready(function() {
@@ -140,9 +165,9 @@ $(document).ready(function() {
             //Build the attacker object with information from the selected character 
             // isAttackerLoaded = buildAttacker(imgID);
             isAttackerLoaded = buildPlayer(imgID);
-            console.log(attacker.Name);
-            console.log(attacker.HealthPoints);
-            console.log(attacker.AttackPower);
+            // console.log(attacker.Name);
+            // console.log(attacker.HealthPoints);
+            // console.log(attacker.AttackPower);
 
             // determine how many more characters are to be moved 
             // found logic to get the array here:  https://www.tutorialrepublic.com/faq/how-to-get-number-of-elements-in-a-div-using-jquery.php
@@ -172,10 +197,10 @@ $(document).ready(function() {
 
                 //Build the attacker object with information from the selected character 
                 // isDefenderLoaded = buildDefender(imgID);
-                isAttackerLoaded = buildPlayer(imgID, 2);
-                console.log(defender.Name);
-                console.log(defender.HealthPoints);
-                console.log(defender.CounterAttackPower);
+                isDefenderLoaded = buildPlayer(imgID, 2);
+                // console.log(defender.Name);
+                // console.log(defender.HealthPoints);
+                // console.log(defender.CounterAttackPower);
                 
                 //  -------------------------------------------------------
                 //  The above automatically moves the referenced item from the first area to the new area
@@ -192,6 +217,8 @@ $(document).ready(function() {
     $("#button-attack").on("click", function() {
 
         attack();
+        // console.log(attacker);
+        // console.log(defender);
 
     });
 
