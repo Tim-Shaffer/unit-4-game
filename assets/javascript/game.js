@@ -51,6 +51,9 @@ function loadCharacters() {
         // reset/clear any variables that may have been previously updated
         attacker = {};
         defender = {};
+        $("#restart-section").empty();
+        isAttackerLoaded = false;
+        isDefenderLoaded = false;
     
         for (var i = 0; i < characters.length; i++) {
 
@@ -107,35 +110,39 @@ function attack() {
     var message = "";
     var msg2 = "";
 
-    if (!isAttackerLoaded) {
-        message = "No Attacker selected Yet to attack with!"
-    } else if (!isDefenderLoaded) {
-        message = "No Defender selected yet to attack!"
-    } else  {
+    if (isGameReady) {
+        if (!isAttackerLoaded) {
+            message = "No Attacker selected Yet to attack with!"
+        } else if (!isDefenderLoaded) {
+            message = "No Defender selected yet to attack!"
+        } else  {
 
-        attackPower += attacker.AttackPower;
+            attackPower += attacker.AttackPower;
 
-        defender.HealthPoints -= attackPower; 
-        message = "You attacked " + defender.Name + " for " + attackPower + " damage.";
+            defender.HealthPoints -= attackPower; 
+            message = "You attacked " + defender.Name + " for " + attackPower + " damage.";
 
-        if (defender.HealthPoints <= 0) {
-            message = "You have defeated " + defender.Name + ".  Choose another enemy to fight.";
-            $("#defender").empty();
-            isDefenderLoaded = false;
-        } else {
-            attacker.HealthPoints -= defender.CounterAttackPower;
-            if (attacker.HealthPoints <= 0 ) {
-                message = "You have been defeated...GAME OVER!!!"
-                isAttackerLoaded = false;
-                isGameReady = false;
+            if (defender.HealthPoints <= 0) {
+                message = "You have defeated " + defender.Name + ".  Choose another enemy to fight.";
+                $("#defender").empty();
+                isDefenderLoaded = false;
             } else {
-                msg2 = defender.Name + " attacked you back for " + defender.CounterAttackPower + " damage."
-            }
-        }      
+                attacker.HealthPoints -= defender.CounterAttackPower;
+                if (attacker.HealthPoints <= 0 ) {
+                    message = "You have been defeated...GAME OVER!!!"
+                    isAttackerLoaded = false;
+                    isGameReady = false;
+                    // Add logic to create a new Restart Button
 
-    };
-    console.log(message);
-    if (msg2 > "" ) {console.log(msg2)}
+                } else {
+                    msg2 = defender.Name + " attacked you back for " + defender.CounterAttackPower + " damage."
+                }
+            }      
+
+        };
+        console.log(message);
+        if (msg2 > "" ) {console.log(msg2)};
+    }
 }
 
 $(document).ready(function() {
@@ -217,9 +224,13 @@ $(document).ready(function() {
     $("#button-attack").on("click", function() {
 
         attack();
-        // console.log(attacker);
-        // console.log(defender);
 
     });
+
+    // $("#button-restart").on("click", function() {
+
+    //     loadCharacters();
+
+    // });
 
 });
