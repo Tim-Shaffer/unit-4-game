@@ -6,6 +6,13 @@ body {
     height: auto; 
 }
 
+.card {
+    position: relative;
+    width: 150px;
+    height: 150px;
+
+}
+
 .images {
     position: relative;
     width: 150px;
