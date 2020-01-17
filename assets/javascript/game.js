@@ -240,52 +240,84 @@ function attack() {
 // end of the attack() function
 // --------------------------------------------------------------------------------------
 
-
+// --------------------------------------------------------------------------------------
+// This function enacts when the html document has been loaded and is ready
+// --------------------------------------------------------------------------------------
 $(document).ready(function() {
 
-    loadCharacters();
+    // --------------------------------------------------------------------------------------
+    //  initialize the game and load the list of characters
+    // --------------------------------------------------------------------------------------
+        loadCharacters();
 
-    // ATTACH ON-CLICK EVENTS TO "CHARACTER" BUTTONS
-    // =================================================================================
+    // --------------------------------------------------------------------------------------
+    //  click events associated with the images class to allow for one function to handle different sections
+    // --------------------------------------------------------------------------------------
     $(".images").on("click", function() {
         var imgID;
-        // Make sure that the button currently has the "characters" class before doing anything so the action doesn't occur for other clicks.
+
+        // --------------------------------------------------------------------------------------
+        // Make sure that the image currently has the "characters" class 
+        // -- ensures that the next steps only happen when the image clicked was part of the character list
+        // --------------------------------------------------------------------------------------
         if ($(this).hasClass("characters")) {
             // console.log("recognized the click from the character section");
-            //  -------------------------------------------------------
+            // --------------------------------------------------------------------------------------
             // get the id of the clicked area and apply-
+            // --------------------------------------------------------------------------------------
             imgID = $(this).attr('id');
 
-            // remove the "character" from the selected item so it won't be impacted if clicked again!
+            // --------------------------------------------------------------------------------------
+            // remove the "character" class and update it for move to the attacker section
+            // --------------------------------------------------------------------------------------
             $("#" + imgID).removeClass("characters").addClass("your-character");
 
-            // move the character clicked to the "your-character" area
+            // --------------------------------------------------------------------------------------
+            // move the character clicked to the "your-character" area 
+            // - the act of appending the element to a new section also removes it from the original section
+            // --------------------------------------------------------------------------------------
             $("#" + imgID).appendTo("#your-character");
-            //  -------------------------------------------------------
-            //  The above automatically moves the referenced item from the first area to the new area
-            //  -------------------------------------------------------
-
+            // --------------------------------------------------------------------------------------
+            
+            // --------------------------------------------------------------------------------------
             //Build the attacker object with information from the selected character 
-            // isAttackerLoaded = buildAttacker(imgID);
+            // --------------------------------------------------------------------------------------
             isAttackerLoaded = buildPlayer(imgID);
-            // console.log(attacker.Name);
-            // console.log(attacker.HealthPoints);
-            // console.log(attacker.AttackPower);
 
+            // --------------------------------------------------------------------------------------
             // determine how many more characters are to be moved 
             // found logic to get the array here:  https://www.tutorialrepublic.com/faq/how-to-get-number-of-elements-in-a-div-using-jquery.php
+            // -- generate an array called matched which contains all the img elements in the section with the characters id
+            // --------------------------------------------------------------------------------------
             var matched = $("#characters img");
+            
+            // --------------------------------------------------------------------------------------
+            //  loop through the array and move the remaining characters to the possible enemies
+            // --------------------------------------------------------------------------------------
             for (i=0; i < matched.length; i++) {
-                // remove the "characters" and add a new class of "enemies"!
+                // --------------------------------------------------------------------------------------
+                // remove the "characters" class and update it for move to the enemies section
+                // --------------------------------------------------------------------------------------
                 $("#" + matched[i].getAttribute("id")).removeClass("characters").addClass("enemies");
 
-                // move the character to the "your-enemies" div
+                // --------------------------------------------------------------------------------------
+                // move the character to the "your-enemies" section 
+                // - the act of appending the element to a new section also removes it from the original section
+                // --------------------------------------------------------------------------------------
                 $("#" + matched[i].getAttribute("id")).appendTo("#your-enemies");
-            }
+            };
 
+            // --------------------------------------------------------------------------------------
+            // make sure the "characters" section is cleared out
+            // --------------------------------------------------------------------------------------
             $("#characters").empty();
 
-        } else if ($(this).hasClass("enemies")) {
+        } 
+        // --------------------------------------------------------------------------------------
+        // Make sure that the image currently has the "enemies" class 
+        // -- ensures that the next steps only happen when the image clicked was part of the enemies list
+        // --------------------------------------------------------------------------------------
+        else if ($(this).hasClass("enemies")) {
             // console.log("recognized the click to select an enemy");
             if ($(this).hasClass("enemies") && !isDefenderLoaded) {
                 //  -------------------------------------------------------
@@ -330,3 +362,7 @@ $(document).ready(function() {
     // });
 
 });
+// --------------------------------------------------------------------------------------
+// end of onkeyup function
+// --------------------------------------------------------------------------------------
+
