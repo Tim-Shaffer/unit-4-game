@@ -288,6 +288,11 @@ function attack() {
             defender.HealthPoints -= attackPower; 
             msg = "You attacked " + defender.Name + " for " + attackPower + " damage.";
 
+            //  *****
+            //update the defender's health points accordingly
+            $("#" + defender.ID + "-hp").text(defender.HealthPoints);
+            //  *****
+
             // --------------------------------------------------------------------------------------
             // verify the remaining health of the defender after an attack
             // - can only counter attack if the initial attack didn't defeat the defender
@@ -333,6 +338,11 @@ function attack() {
             // --------------------------------------------------------------------------------------
             else {
                 attacker.HealthPoints -= defender.CounterAttackPower;
+
+                //  *****
+                //update the attacker's health points accordingly
+                $("#" + attacker.ID + "-hp").text(attacker.HealthPoints);
+                //  *****
                
                 // --------------------------------------------------------------------------------------
                 // verify the remaining health of the attacker after a counter attack
