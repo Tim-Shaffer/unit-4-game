@@ -81,11 +81,23 @@ function loadCharacters() {
         // clear other sections that may have had updates in previous game runs 
         // --------------------------------------------------------------------------------------
         $("#characters").empty();
-        $("img").remove(".your-character");
+        //  *****
+        //  change the img removal of the attacker to be a div 
+        //  *****
+        // $("img").remove(".your-character");
+        $("div").remove(".your-character");
         $("#your-character").hide();
         $("#your-enemies").hide();
-        $("img").remove(".enemies");
-        $("img").remove(".defender");
+        //  *****
+        //  change the img removal of the enemiesto be a div 
+        //  *****
+        // $("img").remove(".enemies");
+        $("div").remove(".enemies");
+        //  *****
+        //  change the img removal of the defender to be a div 
+        //  *****
+        // $("img").remove(".defender");
+        $("div").remove(".defender");
         $("#message-section").empty();
 
         //  *****
@@ -296,7 +308,11 @@ function attack() {
                // - when the enemies deck is empty, there are no more fighters there is a WIN to message
                // --------------------------------------------------------------------------------------
                //    console.log($('#your-enemies').html().length);
-               if ( $('#your-enemies').html().length === 0 ) {
+               //  *****
+               //  changed to check the length of the enemies deck since using a new section for cards   
+               // if ( $('#your-enemies').html().length === 0 ) {   
+               // length of the html string when empty is '18' so I am checking for 18 here
+               if ( $('.enemies-deck').html().length === 18 ) {
                     
                     msg = "You Won!!!!!!  GAME OVER";
                     isDefenderLoaded =false;
