@@ -81,13 +81,10 @@ function loadCharacters() {
         // clear other sections that may have had updates in previous game runs 
         // --------------------------------------------------------------------------------------
         $("#characters").empty();
-        // $("#your-character").empty();
         $("img").remove(".your-character");
         $("#your-character").hide();
-        // $("#your-enemies").empty();
         $("#your-enemies").hide();
         $("img").remove(".enemies");
-        // $("#defender").empty();
         $("img").remove(".defender");
         $("#message-section").empty();
     
