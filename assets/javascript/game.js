@@ -259,14 +259,15 @@ function attack() {
                 isDefenderLoaded = false;
 
                // --------------------------------------------------------------------------------------
-               // using console.long I determined that the length of the html string when empty is '187' 
+               // using console.long I determined that the length of the html string when empty is 0 
                // - when the enemies deck is empty, there are no more fighters there is a WIN to message
                // --------------------------------------------------------------------------------------
-               console.log($('#your-enemies').html().length);
-               if ( $('#your-enemies').html().length === 187 ) {
+               //    console.log($('#your-enemies').html().length);
+               if ( $('#your-enemies').html().length === 0 ) {
                     
                     msg = "You Won!!!!!!  GAME OVER";
-                    
+                    isDefenderLoaded =false;
+                    isGameReady = false;                    
                     addRestartButton();
 
                 } 
