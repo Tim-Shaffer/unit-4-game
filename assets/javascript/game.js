@@ -81,28 +81,13 @@ function loadCharacters() {
         // clear other sections that may have had updates in previous game runs 
         // --------------------------------------------------------------------------------------
         $("#characters").empty();
-        //  *****
-        //  change the img removal of the attacker to be a div 
-        //  *****
-        // $("img").remove(".your-character");
         $("div").remove(".your-character");
         $("#your-character").hide();
         $("#your-enemies").hide();
-        //  *****
-        //  change the img removal of the enemiesto be a div 
-        //  *****
-        // $("img").remove(".enemies");
         $("div").remove(".enemies");
-        //  *****
-        //  change the img removal of the defender to be a div 
-        //  *****
-        // $("img").remove(".defender");
         $("div").remove(".defender");
         $("#message-section").empty();
 
-        //  *****
-        // adding code to make things into cards so I can display the name and health points with the images
-        //  *****
         // --------------------------------------------------------------------------------------
         //  add a card deck divison for the characters if it doesn't already exist
         // -------------------------------------------------------------------------------------- 
@@ -110,37 +95,27 @@ function loadCharacters() {
             $("#characters").append('<div class="card-deck chars-deck"></div>');
         };
         // -------------------------------------------------------------------------------------- 
-        //  *****
     
         // --------------------------------------------------------------------------------------
         // loop through the characters list and build the initial view of the possible characters
         // --------------------------------------------------------------------------------------
         for (var i = 0; i < characters.length; i++) {
 
-            //  *****
-            // var charImg = $("<img>");
-            // charImg.attr('src', characters[i].Image);
-            // charImg.addClass("img-thumbnail img-fluid images characters p-2 mx-1");
-            // charImg.attr('id', characters[i].ID).attr("alt", characters[i].Name);
-            // $("#characters").append(charImg)
-            //  *****
             // --------------------------------------------------------------------------------------
             //  build the cards inside the card deck divison for the characters with an id associated to the character
-            // -------------------------------------------------------------------------------------- 
-            //  append a new div inside the deck for the card
-            $(".chars-deck").append('<div class="card bg-light text-dark characters p-3" id="'+ characters[i].ID + '">');
-            //  append the image inside the card
+            //  1) append a new div inside the deck for the card
+            //  2) append the image inside the card
+            //  3) append a new div inside the card for the card body
+            //  4) append a new div inside the card body to hold the name
+            //  5) append a new div inside the card body to hold the health points
+            // --------------------------------------------------------------------------------------  
+            $(".chars-deck").append('<div class="card bg-light text-dark characters p-3" id="'+ characters[i].ID + '">');   
             $("#" + characters[i].ID).append('<img src="' + characters[i].Image 
                             +'" class="card-img-top img-thumbnail img-fluid images" alt="' 
                             + characters[i].Name +'"id="'+ characters[i].ID + '-img">');
-            //  append a new div inside the card for the card body
             $("#" + characters[i].ID).append('<div class="card-body text-center card-img-overlay" id="'+ characters[i].ID + '-body">');
-            //  append a new div inside the card body to hold the name
             $("#" + characters[i].ID + "-body").append('<div class="card-title plyr-name" id="'+ characters[i].ID + '-name">' + characters[i].Name + '</div>');
-            //  append a new div inside the card body to hold the health points
             $("#" + characters[i].ID + "-body").append('<div class="card-title plyr-hp" id="'+ characters[i].ID + '-hp">' + characters[i].HealthPoints + '</div>');
-
-            //  *****
 
         };
 
@@ -288,10 +263,10 @@ function attack() {
             defender.HealthPoints -= attackPower; 
             msg = "You attacked " + defender.Name + " for " + attackPower + " damage.";
 
-            //  *****
-            //update the defender's health points accordingly
+            // --------------------------------------------------------------------------------------
+            // display the defender's updated health points accordingly
+            // --------------------------------------------------------------------------------------
             $("#" + defender.ID + "-hp").text(defender.HealthPoints);
-            //  *****
 
             // --------------------------------------------------------------------------------------
             // verify the remaining health of the defender after an attack
@@ -309,14 +284,9 @@ function attack() {
                 isDefenderLoaded = false;
 
                // --------------------------------------------------------------------------------------
-               // using console.long I determined that the length of the html string when empty is 0 
+               // using console.long I determined that the length of the html string when empty is 18 
                // - when the enemies deck is empty, there are no more fighters there is a WIN to message
                // --------------------------------------------------------------------------------------
-               //    console.log($('#your-enemies').html().length);
-               //  *****
-               //  changed to check the length of the enemies deck since using a new section for cards   
-               // if ( $('#your-enemies').html().length === 0 ) {   
-               // length of the html string when empty is '18' so I am checking for 18 here
                if ( $('.enemies-deck').html().length === 18 ) {
                     
                     msg = "You Won!!!!!!  GAME OVER";
@@ -339,10 +309,10 @@ function attack() {
             else {
                 attacker.HealthPoints -= defender.CounterAttackPower;
 
-                //  *****
-                //update the attacker's health points accordingly
+                // --------------------------------------------------------------------------------------
+                // display the attackr's updated health points accordingly
+                // --------------------------------------------------------------------------------------
                 $("#" + attacker.ID + "-hp").text(attacker.HealthPoints);
-                //  *****
                
                 // --------------------------------------------------------------------------------------
                 // verify the remaining health of the attacker after a counter attack
@@ -406,11 +376,7 @@ $(document).ready(function() {
     // --------------------------------------------------------------------------------------
     // $(".images").on("click", function() {
     // --------------------------------------------------------------------------------------
-    //  *****
-    //   updated the click to look for the card instead of the images 
-    // $('body').on('click', ".images", function () {
     $('body').on('click', ".card", function () {
-    //  *****
         var imgID;
 
         // --------------------------------------------------------------------------------------
@@ -444,13 +410,9 @@ $(document).ready(function() {
             // --------------------------------------------------------------------------------------
             // determine how many more characters are to be moved 
             // found logic to get the array here:  https://www.tutorialrepublic.com/faq/how-to-get-number-of-elements-in-a-div-using-jquery.php
-            // -- generate an array called matched which contains all the img elements in the section with the characters id
+            // -- generate an array called matched which contains all the elements having a card class in the section with the characters id
             // --------------------------------------------------------------------------------------
-            //  *****
-            //   updated the click to look for the card instead of the images
-            // var matched = $("#characters img");
             var matched = $("#characters .card");
-            //  *****
             
             // --------------------------------------------------------------------------------------
             //  loop through the array and move the remaining characters to the possible enemies
@@ -460,19 +422,18 @@ $(document).ready(function() {
                 // remove the "characters" class and update it for move to the enemies section
                 // --------------------------------------------------------------------------------------
                 $("#" + matched[i].getAttribute("id")).removeClass("characters").addClass("enemies");
-                //  *****
+                
+                // --------------------------------------------------------------------------------------
+                // remove the "bg-light" class and update it for move to the enemies section so the background will be red
+                // --------------------------------------------------------------------------------------
                 $("#" + matched[i].getAttribute("id")).removeClass("bg-light").addClass("bg-red");
-                //  *****
 
                 // --------------------------------------------------------------------------------------
-                // move the character to the "your-enemies" section 
+                // move the character to the "enemies-deck" section 
                 // - the act of appending the element to a new section also removes it from the original section
                 // --------------------------------------------------------------------------------------
-                //  *****
-                //  move the character to the enemies-deck
-                // $("#" + matched[i].getAttribute("id")).appendTo("#your-enemies");
                 $("#" + matched[i].getAttribute("id")).appendTo(".enemies-deck");
-                //  *****
+ 
             };
 
             // --------------------------------------------------------------------------------------
