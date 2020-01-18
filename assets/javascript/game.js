@@ -380,7 +380,11 @@ $(document).ready(function() {
     // --------------------------------------------------------------------------------------
     // $(".images").on("click", function() {
     // --------------------------------------------------------------------------------------
-    $('body').on('click', ".images", function () {
+    //  *****
+    //   updated the click to look for the card instead of the images 
+    // $('body').on('click', ".images", function () {
+    $('body').on('click', ".card", function () {
+    //  *****
         var imgID;
 
         // --------------------------------------------------------------------------------------
@@ -416,7 +420,11 @@ $(document).ready(function() {
             // found logic to get the array here:  https://www.tutorialrepublic.com/faq/how-to-get-number-of-elements-in-a-div-using-jquery.php
             // -- generate an array called matched which contains all the img elements in the section with the characters id
             // --------------------------------------------------------------------------------------
-            var matched = $("#characters img");
+            //  *****
+            //   updated the click to look for the card instead of the images
+            // var matched = $("#characters img");
+            var matched = $("#characters .card");
+            //  *****
             
             // --------------------------------------------------------------------------------------
             //  loop through the array and move the remaining characters to the possible enemies
@@ -426,12 +434,19 @@ $(document).ready(function() {
                 // remove the "characters" class and update it for move to the enemies section
                 // --------------------------------------------------------------------------------------
                 $("#" + matched[i].getAttribute("id")).removeClass("characters").addClass("enemies");
+                //  *****
+                $("#" + matched[i].getAttribute("id")).removeClass("bg-light").addClass("bg-red");
+                //  *****
 
                 // --------------------------------------------------------------------------------------
                 // move the character to the "your-enemies" section 
                 // - the act of appending the element to a new section also removes it from the original section
                 // --------------------------------------------------------------------------------------
-                $("#" + matched[i].getAttribute("id")).appendTo("#your-enemies");
+                //  *****
+                //  move the character to the enemies-deck
+                // $("#" + matched[i].getAttribute("id")).appendTo("#your-enemies");
+                $("#" + matched[i].getAttribute("id")).appendTo(".enemies-deck");
+                //  *****
             };
 
             // --------------------------------------------------------------------------------------
