@@ -6,13 +6,13 @@ body {
     height: auto; 
 }
 
-/* Making sure the card class is the same size throughout */
+/* Making sure the card class is the same size throughout
 .card {
     position: relative;
     width: 150px;
     height: 150px;
 
-}
+} */
 
 /* Making sure the images class is the same size throughout */
 .images {
@@ -58,3 +58,23 @@ body {
     border: 3px solid green;
     background-color: white;
 }   
+
+.plyr-name {
+    position: absolute;
+    /* background-color: white; */
+    text-align: center;
+    color: black;
+    top: 0px;
+    width: inherit;
+
+  }
+
+  .plyr-hp {
+    position: absolute;
+    /* background-color: white; */
+    text-align: center;
+    color: black;
+    bottom: -10px;
+    width: inherit;
+
+  }

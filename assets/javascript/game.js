@@ -87,17 +87,48 @@ function loadCharacters() {
         $("img").remove(".enemies");
         $("img").remove(".defender");
         $("#message-section").empty();
+
+        //  *****
+        // adding code to make things into cards so I can display the name and health points with the images
+        //  *****
+        // --------------------------------------------------------------------------------------
+        //  add a card deck divison for the characters if it doesn't already exist
+        // -------------------------------------------------------------------------------------- 
+        if ($(".chars-deck").length === 0) {
+            $("#characters").append('<div class="card-deck chars-deck"></div>');
+        };
+        // -------------------------------------------------------------------------------------- 
+        //  *****
     
         // --------------------------------------------------------------------------------------
         // loop through the characters list and build the initial view of the possible characters
         // --------------------------------------------------------------------------------------
         for (var i = 0; i < characters.length; i++) {
 
-            var charImg = $("<img>");
-            charImg.attr('src', characters[i].Image);
-            charImg.addClass("img-thumbnail img-fluid images characters p-2 mx-1");
-            charImg.attr('id', characters[i].ID).attr("alt", characters[i].Name);
-            $("#characters").append(charImg)
+            //  *****
+            // var charImg = $("<img>");
+            // charImg.attr('src', characters[i].Image);
+            // charImg.addClass("img-thumbnail img-fluid images characters p-2 mx-1");
+            // charImg.attr('id', characters[i].ID).attr("alt", characters[i].Name);
+            // $("#characters").append(charImg)
+            //  *****
+            // --------------------------------------------------------------------------------------
+            //  build the cards inside the card deck divison for the characters with an id associated to the character
+            // -------------------------------------------------------------------------------------- 
+            //  append a new div inside the deck for the card
+            $(".chars-deck").append('<div class="card bg-light text-dark characters p-3" id="'+ characters[i].ID + '">');
+            //  append the image inside the card
+            $("#" + characters[i].ID).append('<img src="' + characters[i].Image 
+                            +'" class="card-img-top img-thumbnail img-fluid images" alt="' 
+                            + characters[i].Name +'"id="'+ characters[i].ID + '-img">');
+            //  append a new div inside the card for the card body
+            $("#" + characters[i].ID).append('<div class="card-body text-center card-img-overlay" id="'+ characters[i].ID + '-body">');
+            //  append a new div inside the card body to hold the name
+            $("#" + characters[i].ID + "-body").append('<div class="card-title plyr-name" id="'+ characters[i].ID + '-name">' + characters[i].Name + '</div>');
+            //  append a new div inside the card body to hold the health points
+            $("#" + characters[i].ID + "-body").append('<div class="card-title plyr-hp" id="'+ characters[i].ID + '-hp">' + characters[i].HealthPoints + '</div>');
+
+            //  *****
 
         };
 
