@@ -82,8 +82,10 @@ function loadCharacters() {
         // --------------------------------------------------------------------------------------
         $("#characters").empty();
         $("#your-character").empty();
-        $("#your-enemies").empty();
-        $("#defender").empty();
+        // $("#your-enemies").empty();
+        $("img").remove(".enemies");
+        // $("#defender").empty();
+        $("img").remove(".defender");
         $("#message-section").empty();
     
         // --------------------------------------------------------------------------------------
