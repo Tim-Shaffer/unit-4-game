@@ -263,7 +263,7 @@ $(document).ready(function() {
         if ($(this).hasClass("characters")) {
             // console.log("recognized the click from the character section");
             // --------------------------------------------------------------------------------------
-            // get the id of the clicked area and apply-
+            // get the id of the clicked area
             // --------------------------------------------------------------------------------------
             imgID = $(this).attr('id');
 
@@ -280,7 +280,7 @@ $(document).ready(function() {
             // --------------------------------------------------------------------------------------
             
             // --------------------------------------------------------------------------------------
-            //Build the attacker object with information from the selected character 
+            // Build the attacker object with information from the selected character 
             // --------------------------------------------------------------------------------------
             isAttackerLoaded = buildPlayer(imgID);
 
@@ -318,48 +318,55 @@ $(document).ready(function() {
         // -- ensures that the next steps only happen when the image clicked was part of the enemies list
         // --------------------------------------------------------------------------------------
         else if ($(this).hasClass("enemies")) {
-            // console.log("recognized the click to select an enemy");
+            // --------------------------------------------------------------------------------------
+            // --------------------------------------------------------------------------------------
             if ($(this).hasClass("enemies") && !isDefenderLoaded) {
-                //  -------------------------------------------------------
-                // get the id of the clicked area and apply-
+                // --------------------------------------------------------------------------------------
+                // get the id of the clicked area 
+                // --------------------------------------------------------------------------------------
                 imgID = $(this).attr('id');
 
-                // remove the "character" from the selected item so it won't be impacted if clicked again!
+                // --------------------------------------------------------------------------------------
+                // remove the "enemies" class and update it for move to the defender section
+                // --------------------------------------------------------------------------------------
                 $("#" + imgID).removeClass("enemies").addClass("defender");
 
-                // move the character clicked to the "your-character" area
+                // --------------------------------------------------------------------------------------
+                // move the character to the defender section 
+                // - the act of appending the element to a new section also removes it from the original section
+                // --------------------------------------------------------------------------------------
                 $("#" + imgID).appendTo("#defender");
 
-                //Build the attacker object with information from the selected character 
-                // isDefenderLoaded = buildDefender(imgID);
+                // --------------------------------------------------------------------------------------
+                // Build the defender object with information from the selected character 
+                // --------------------------------------------------------------------------------------
                 isDefenderLoaded = buildPlayer(imgID, 2);
-                // console.log(defender.Name);
-                // console.log(defender.HealthPoints);
-                // console.log(defender.CounterAttackPower);
-                
-                //  -------------------------------------------------------
-                //  The above automatically moves the referenced item from the first area to the new area
-                //  -------------------------------------------------------
             }
 
-        } else if ($(this).hasClass("your-character")) {
-            // console.log("recognized the click of your character");
-            // NULL function so that nothing happens
-        }
+        } ;
+        // --------------------------------------------------------------------------------------
+        // clicking on an image in any other section does NOTHING!!!
+        // --------------------------------------------------------------------------------------
 
     });
 
+    // --------------------------------------------------------------------------------------
+    //  execute the attack function logic when the attack button is clicked
+    // --------------------------------------------------------------------------------------
     $("#button-attack").on("click", function() {
 
         attack();
 
     });
 
-    // $("#button-restart").on("click", function() {
+    // --------------------------------------------------------------------------------------
+    //  execute the loadCharacters function logic when the restart button is clicked
+    // --------------------------------------------------------------------------------------
+    $("#button-restart").on("click", function() {
 
-    //     loadCharacters();
+        loadCharacters();
 
-    // });
+    });
 
 });
 // --------------------------------------------------------------------------------------
