@@ -6,6 +6,7 @@ body {
     height: auto; 
 }
 
+/* Making sure the card class is the same size throughout */
 .card {
     position: relative;
     width: 150px;
@@ -13,30 +14,36 @@ body {
 
 }
 
+/* Making sure the images class is the same size throughout */
 .images {
     position: relative;
     width: 150px;
     height: 150px;
 }
 
+/* giving the character list a green border */
 .characters {
     border: 3px solid green;
 }
 
+/* position the title id to the right */
 #title {
      text-align: right;
 }
 
+/* showing the attacker with a green border and white backgroun */
 .your-character {
     border: 3px solid green;
     background-color: white;
 }
 
+/* showing the enemies with a black border and red background */
 .enemies {
     border: 3px solid black;
     background-color: red;
 }
 
+/* showing the defender with a green border and white backgroun */
 .defender {
     border: 3px solid green;
     background-color: white;
