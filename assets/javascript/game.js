@@ -70,11 +70,21 @@ function loadCharacters() {
         defender = {};
         isAttackerLoaded = false;
         isDefenderLoaded = false;
+        attackPower = 0;
 
         // --------------------------------------------------------------------------------------
         // clear the restart button - should only appear at the end of the game
         // --------------------------------------------------------------------------------------
         $("#restart-section").empty();
+
+        // --------------------------------------------------------------------------------------
+        // clear other sections that may have had updates in previous game runs 
+        // --------------------------------------------------------------------------------------
+        $("#characters").empty();
+        $("#your-character").empty();
+        $("#your-enemies").empty();
+        $("#defender").empty();
+        $("#message-section").empty();
     
         // --------------------------------------------------------------------------------------
         // loop through the characters list and build the initial view of the possible characters
@@ -113,9 +123,22 @@ function buildPlayer(str, opt=1) {
 
     if (opt === 2) {
         // --------------------------------------------------------------------------------------
-        // logic found in stack overflow - build the defender object based on the ID passed in the str
+        // build the defender object based on the ID passed in the str
         // --------------------------------------------------------------------------------------
-        defender = characters.find(o => o.ID === str);
+        var idx = 0;
+        for (i=0; i < characters.length; i++) {
+            if (characters[i].ID === str) {
+                idx = i;
+                i = characters.length;
+            }
+        };
+
+        defender.Name = characters[idx].Name;
+        defender.Image = characters[idx].Image;
+        defender.ID = characters[idx].ID;
+        defender.HealthPoints = characters[idx].HealthPoints;
+        defender.AttackPower = characters[idx].AttackPower;
+        defender.CounterAttackPower = characters[idx].CounterAttackPower;    
 
         if (defender) {
             return true;
@@ -126,10 +149,22 @@ function buildPlayer(str, opt=1) {
 
     } else {
         // --------------------------------------------------------------------------------------
-        //default for any other value in option
-        // logic found in stack overflow - build the attacker object based on the ID passed in the str
+        // default for any other value in option
+        // - build the attacker object based on the ID passed in the str
         // --------------------------------------------------------------------------------------
-        attacker = characters.find(o => o.ID === str);
+        for (i=0; i < characters.length; i++) {
+            if (characters[i].ID === str) {
+                idx = i;
+                i = characters.length;
+            }
+        };
+
+        attacker.Name = characters[idx].Name;
+        attacker.Image = characters[idx].Image;
+        attacker.ID = characters[idx].ID;
+        attacker.HealthPoints = characters[idx].HealthPoints;
+        attacker.AttackPower = characters[idx].AttackPower;
+        attacker.CounterAttackPower = characters[idx].CounterAttackPower;
 
         if (attacker) {
             return true;
@@ -305,14 +340,13 @@ function attack() {
 $(document).ready(function() {
 
     // --------------------------------------------------------------------------------------
-    //  initialize the game and load the list of characters
-    // --------------------------------------------------------------------------------------
-        loadCharacters();
-
-    // --------------------------------------------------------------------------------------
     //  click events associated with the images class to allow for one function to handle different sections
+    //  - was not working after a restart with original click setup
+    //  - found a workaround solution from https://makeitspendit.com/fix-jquery-click-event-not-working-with-dynamically-added-elements/
     // --------------------------------------------------------------------------------------
-    $(".images").on("click", function() {
+    // $(".images").on("click", function() {
+    // --------------------------------------------------------------------------------------
+    $('body').on('click', ".images", function () {
         var imgID;
 
         // --------------------------------------------------------------------------------------
@@ -411,6 +445,7 @@ $(document).ready(function() {
 
     // --------------------------------------------------------------------------------------
     //  execute the attack function logic when the attack button is clicked
+    // - this works as is since the button was NOT added dynamically
     // --------------------------------------------------------------------------------------
     $("#button-attack").on("click", function() {
 
@@ -420,12 +455,22 @@ $(document).ready(function() {
 
     // --------------------------------------------------------------------------------------
     //  execute the loadCharacters function logic when the restart button is clicked
+    //  - was not working with original click setup
+    //  - found a workaround solution from https://makeitspendit.com/fix-jquery-click-event-not-working-with-dynamically-added-elements/
     // --------------------------------------------------------------------------------------
-    $("#button-restart").on("click", function() {
+    // $("#button-restart").on("click", function() {
+    $('body').on('click', "#button-restart", function () {
+        console.log("Identified the click of the restart button");
 
         loadCharacters();
 
     });
+
+    
+    // --------------------------------------------------------------------------------------
+    //  initialize the game and load the list of characters
+    // --------------------------------------------------------------------------------------
+    loadCharacters();
 
 });
 // --------------------------------------------------------------------------------------

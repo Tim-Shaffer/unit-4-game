@@ -37,6 +37,16 @@ body {
     background-color: white;
 }
 
+/* change the text color for the enemies to show better on the background  */
+#your-enemies h3 {
+    color: red;
+}
+
+/* change the text color for the messages to show better on the background  */
+#message-section h3 {
+    color: blue;
+}
+
 /* showing the enemies with a black border and red background */
 .enemies {
     border: 3px solid black;
