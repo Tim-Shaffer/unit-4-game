@@ -146,6 +146,25 @@ function buildPlayer(str, opt=1) {
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
+// function to dynamically add the restart button when the game is finished
+// --------------------------------------------------------------------------------------
+function addRestartButton(){
+    
+    var tag = $("<button>")
+    tag.attr('id', "button-restart").attr("value", "restart");
+
+    tag.addClass("btn btn-dark p-3 m-1 restart");
+
+    tag.html('<span>Restart</span>');
+
+    $("#restart-section").append(tag);
+
+};
+// --------------------------------------------------------------------------------------
+// end of the addREstartButton() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
 //  function to process when the attack button is pressed 
 //  main game play revolves around this function
 // --------------------------------------------------------------------------------------
@@ -153,7 +172,7 @@ function attack() {
     // --------------------------------------------------------------------------------------
     // set variables to control messages back to the page
     // --------------------------------------------------------------------------------------
-    var message = "";
+    var msg = "";
     var msg2 = "";
 
     // --------------------------------------------------------------------------------------
@@ -164,13 +183,13 @@ function attack() {
         // make sure an Attacker has been picked
         // --------------------------------------------------------------------------------------
         if (!isAttackerLoaded) {
-            message = "No Attacker selected Yet to attack with!"
+            msg = "No Attacker selected Yet to attack with!"
         } 
         // --------------------------------------------------------------------------------------
         // make sure a Defender has been picked
         // --------------------------------------------------------------------------------------
         else if (!isDefenderLoaded) {
-            message = "No Defender selected yet to attack!"
+            msg = "No Defender selected yet to attack!"
         } 
         // --------------------------------------------------------------------------------------
         // both the Attacker and Defender are in place
@@ -187,7 +206,7 @@ function attack() {
             // reduce the defenders health by the power of the attack and create a message
             // --------------------------------------------------------------------------------------
             defender.HealthPoints -= attackPower; 
-            message = "You attacked " + defender.Name + " for " + attackPower + " damage.";
+            msg = "You attacked " + defender.Name + " for " + attackPower + " damage.";
 
             // --------------------------------------------------------------------------------------
             // verify the remaining health of the defender after an attack
@@ -200,9 +219,28 @@ function attack() {
                 //  - prepare the defender section for a new character to be picked
                 //  - update boolean that there is no longer a defender to attack
                 // --------------------------------------------------------------------------------------
-                message = "You have defeated " + defender.Name + ".  Choose another enemy to fight.";
+                msg = "You have defeated " + defender.Name + ".  Choose another enemy to fight.";
                 $("#defender").empty();
                 isDefenderLoaded = false;
+
+               // --------------------------------------------------------------------------------------
+               // using console.long I determined that the length of the html string when empty is '187' 
+               // - when the enemies deck is empty, there are no more fighters there is a WIN to message
+               // --------------------------------------------------------------------------------------
+               console.log($('#your-enemies').html().length);
+               if ( $('#your-enemies').html().length === 187 ) {
+                    
+                    msg = "You Won!!!!!!  GAME OVER";
+                    
+                    addRestartButton();
+
+                } 
+                // --------------------------------------------------------------------------------------
+                // still more enemies to attack
+                // --------------------------------------------------------------------------------------
+                else {
+                    msg = "You have defeated " + defender.Name + ".  Choose another enemy to fight.";
+                };
             } 
             // --------------------------------------------------------------------------------------
             //  defender can counter attack
@@ -217,10 +255,11 @@ function attack() {
                 // - update booleans so no further action can occur in the game
                 // --------------------------------------------------------------------------------------
                 if (attacker.HealthPoints <= 0 ) {
-                    message = "You have been defeated...GAME OVER!!!"
+                    msg = "You have been defeated...GAME OVER!!!"
                     isAttackerLoaded = false;
                     isGameReady = false;
-                    // Add logic to create a new Restart Button
+                    
+                    addRestartButton();
                 } 
                 // --------------------------------------------------------------------------------------
                 //  add the second half of the message to display the counter attack 
@@ -232,9 +271,29 @@ function attack() {
 
         };
         
-        console.log(message);
-        if (msg2 > "" ) {console.log(msg2)};
+        // --------------------------------------------------------------------------------------
+        // empty the message section so it can be reload with the new message
+        // --------------------------------------------------------------------------------------
+        $("#message-section").empty();
+
+        // --------------------------------------------------------------------------------------
+        // display the message to the page in the message section
+        // --------------------------------------------------------------------------------------
+        var msgTag = $("<h3>");
+        msgTag.text(msg);
+        $("#message-section").append(msgTag);
+
+        // --------------------------------------------------------------------------------------
+        // display the counter attack message to the page in if it is valued
+        // --------------------------------------------------------------------------------------
+        if (msg2 > "") {
+            msgTag = $("<h3>");
+            msgTag.text(msg2);
+            $("#message-section").append(msgTag);
+        };
+
     }
+
 };
 // --------------------------------------------------------------------------------------
 // end of the attack() function
