@@ -81,8 +81,11 @@ function loadCharacters() {
         // clear other sections that may have had updates in previous game runs 
         // --------------------------------------------------------------------------------------
         $("#characters").empty();
-        $("#your-character").empty();
+        // $("#your-character").empty();
+        $("img").remove(".your-character");
+        $("#your-character").hide();
         // $("#your-enemies").empty();
+        $("#your-enemies").hide();
         $("img").remove(".enemies");
         // $("#defender").empty();
         $("img").remove(".defender");
@@ -406,7 +409,13 @@ $(document).ready(function() {
             // --------------------------------------------------------------------------------------
             // make sure the "characters" section is cleared out
             // --------------------------------------------------------------------------------------
-            $("#characters").empty();
+            // $("#characters").empty();
+
+            // display the sections 
+            // document.getElementById("your-character").style.display = 'block';
+            $("#your-character").show();
+            //document.getElementById("your-enemies").style.display = 'block';
+            $("#your-enemies").show();
 
         } 
         // --------------------------------------------------------------------------------------
