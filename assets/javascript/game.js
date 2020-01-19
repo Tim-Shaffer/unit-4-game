@@ -50,6 +50,9 @@ isGameReady = false;
 
 // to increment Attack Power after each successful attack
 var attackPower = 0;
+
+// adding audio effect - syntax from class activities 05-timers\08-simple-timer
+var audio = new Audio("./assets/audio/lightsaber_02.mp3");
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
@@ -332,7 +335,10 @@ function attack() {
                 else {
                     msg2 = defender.Name + " attacked you back for " + defender.CounterAttackPower + " damage."
                 }
-            }      
+            }    
+            
+            // adding audio effect - syntax from class activities 05-timers\08-simple-timer
+            audio.play();
 
         };
         
@@ -501,7 +507,6 @@ $(document).ready(function() {
     // --------------------------------------------------------------------------------------
     // $("#button-restart").on("click", function() {
     $('body').on('click', "#button-restart", function () {
-        console.log("Identified the click of the restart button");
 
         loadCharacters();
 
