@@ -7,31 +7,31 @@ var characters = [
     Image: "./assets/images/Yodatrur.png",
     ID: "Y",
     HealthPoints: 120,
-    AttackPower: 8,
-    CounterAttackPower: 25
+    AttackPower: 10,
+    CounterAttackPower: 24
     },
     {
     Name: "Rey",
     Image: "./assets/images/Rey.jpg",
     ID: "R",
-    HealthPoints: 100,
-    AttackPower: 5,
-    CounterAttackPower: 5
+    HealthPoints: 110,
+    AttackPower: 12,
+    CounterAttackPower: 20
     },
     {
     Name: "Darth Vader",
     Image: "./assets/images/DV.jpg",
     ID: "DV",
-    HealthPoints: 150,
-    AttackPower: 6,
+    HealthPoints: 130,
+    AttackPower: 10,
     CounterAttackPower: 15
     },
     {
     Name: "Darth Maul",
     Image: "./assets/images/darth-maul.jpeg",
     ID: "DM",
-    HealthPoints: 180,
-    AttackPower: 10,
+    HealthPoints: 140,
+    AttackPower: 8,
     CounterAttackPower: 20
     }
 ];
@@ -80,7 +80,7 @@ function loadCharacters() {
         // --------------------------------------------------------------------------------------
         // clear other sections that may have had updates in previous game runs 
         // --------------------------------------------------------------------------------------
-        $("#characters").empty();
+        $("#characters").show();
         $("div").remove(".your-character");
         $("#your-character").hide();
         $("#your-enemies").hide();
@@ -384,7 +384,6 @@ $(document).ready(function() {
         // -- ensures that the next steps only happen when the image clicked was part of the character list
         // --------------------------------------------------------------------------------------
         if ($(this).hasClass("characters")) {
-            // console.log("recognized the click from the character section");
             // --------------------------------------------------------------------------------------
             // get the id of the clicked area
             // --------------------------------------------------------------------------------------
@@ -437,14 +436,14 @@ $(document).ready(function() {
             };
 
             // --------------------------------------------------------------------------------------
-            // make sure the "characters" section is cleared out
+            // make sure the "characters" section is hidden
             // --------------------------------------------------------------------------------------
-            // $("#characters").empty();
+            $("#characters").hide();
 
+            // --------------------------------------------------------------------------------------
             // display the sections 
-            // document.getElementById("your-character").style.display = 'block';
+            // --------------------------------------------------------------------------------------
             $("#your-character").show();
-            //document.getElementById("your-enemies").style.display = 'block';
             $("#your-enemies").show();
 
         } 
