@@ -12,7 +12,7 @@ var characters = [
     },
     {
     Name: "Rey",
-    Image: "./assets/images/Rey.jpg",
+    Image: "./assets/images/Reyureru.png",
     ID: "R",
     HealthPoints: 110,
     AttackPower: 12,
@@ -20,7 +20,7 @@ var characters = [
     },
     {
     Name: "Darth Vader",
-    Image: "./assets/images/DV.jpg",
+    Image: "./assets/images/Darth_Vader.png",
     ID: "DV",
     HealthPoints: 130,
     AttackPower: 10,
@@ -28,7 +28,7 @@ var characters = [
     },
     {
     Name: "Darth Maul",
-    Image: "./assets/images/darth-maul.jpeg",
+    Image: "./assets/images/Darth-Maul.png",
     ID: "DM",
     HealthPoints: 140,
     AttackPower: 8,
