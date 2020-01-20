@@ -1,83 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-us">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Tim Shaffer | RPG Game Selector </title>
-
-    <!-- Added link to the jQuery Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Reset CSS - copied from  http://meyerweb.com/eric/tools/css/reset/  -->
-    <link rel="stylesheet" href="./assets/css/reset.css">
-
-    <!-- Link for Bootstrap Styling -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!-- Personal Stylesheet -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-
+  <meta charset="UTF-8">
+  <title>Tim Shaffer | RPG Games</title>
+  <!-- Adding the viewport tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-    
-    <div class="container" id="game-screen">
 
-                
-        <div class="row">
-            
-            <div class="col-sm-12 text-black">
+  <header id="masthead">
+    <div class="container">
+      <a href="#" id="logo">Tim Shaffer</a>
+      <nav>
+        <a href="https://tim-shaffer.github.io/Responsive-Portfolio/portfolio.html">Portfolio</a>
+      </nav>
+    </div>
+  </header>
 
-                <div class="jumbotron jumbotron-fluid">
-                
-                    <div class="container p-3">
-                      <h3>RPG Games to Play</h3>
-                      <br>
-                      <p class="lead">
-                        Select one of the two RPG Games below by clicking on the image:
-                      </p>
-                    </div>
-                
-                </div>
+    <div id="main-container" class="container">
+        <section class="main-section">
+        <h1>RPG Games </h1>
 
+        <p>Select one of the two RPG Games below by clicking on the image: </p>
+
+            <div class="work">
+                <img src="./assets/images/FeedHomerRPG.jpg" alt="Feed Homer">
+                <a class="tag" href="./FeedHomer.html" title="Feed Homer"><h3>Feed Homer RPG</h3></a>
             </div>
-        
-
-        </div>
-
-        <div class="row">
-            
-            <div class="col-sm-12 text-black" id="game-section">
-
-                <div class="jumbotron jumbotron-fluid">
-            
-                    <!-- Options Go Here -->
-                    <div class="card-deck">
-                        <div class="card games">
-                            <img src="./assets/images/FeedHomerRPG.jpg" class="card-img-top img-thumbnail img-fluid images" alt="Feed Homer" id="feed-homer">
-                            <a class="tag" href="./FeedHomer.html" title="Feed Homer"><h3>Feed Homer RPG</h3></a>
-                        </div>
-                        <div class="card games">
-                            <img src="./assets/images/StarWarsRPG.jpg" class="card-img-top img-thumbnail img-fluid images" alt="Star Wars RPG" id="star-wars">
-                            <a class="tag" href="./StarWarsRpg.html" title="Star Wars"><h3>Star Wars RPG</h3></a>
-                        </div>
-                    </div>
-
-                <!-- </div> -->
-
+            <div class="work">
+                <img src="./assets/images/StarWarsRPG.jpg" alt="Star Wars">
+                <a class="tag" href="./StarWarsRpg.html" title="Star Wars"><h3>Star Wars RPG</h3></a>
             </div>
 
-        </div>
+        </section>
 
-        
     </div>
 
-    <!-- Insert External Scripting -->
-    <!-- Not using any scripting on this page at the moment -->
-
+  <footer>
+    <div class="container">
+      Copyright &copy; 2020
+    </div>
+  </footer>
+  
 </body>
 
 </html>

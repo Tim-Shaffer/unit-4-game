@@ -1,71 +1,393 @@
-/* Body Content Styling */
 body {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    background-image: url("../images/concrete_seamless.png"); 
-    max-width: 100%;
-    height: auto; 
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 34px;
+  color: #777777;
+  background: url("../images/concrete_seamless.png");
 }
 
-
-.jumbotron {
-    background-color: transparent;
+* {
+  box-sizing: border-box;
 }
 
- .images {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border: 0 none;
-    background-color: transparent;
+/* general */
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  clear: both;
 }
 
-.games {
-    max-width: 300px;
-    background-color: transparent;
-    border: none;
+h1,
+h2,
+h3,
+p {
+  margin-bottom: 20px;
 }
 
-.img-thumbnail {
-    border: none;
+p:last-child {
+  margin-bottom: 0;
 }
 
-/* .work {
-    position: relative;
-    float: left;
-    width: 274px;
-    margin: 20px 0 25px;
-    overflow: auto;
+h1,
+h2,
+h3 {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-weight: 700;
+  color: #4aaaa5;
+}
+
+h1 {
+  padding-bottom: 20px;
+  font-size: 30px;
+  line-height: 49px;
+  border-bottom: 3px solid #dddddd;
+}
+
+h2,
+h3 {
+  font-size: 22px;
+}
+
+/* header */
+
+#masthead {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  margin: 0 0 30px;
+  overflow: auto;
+  color: #ffffff;
+  background: #ffffff;
+  border-bottom: 2px solid #cccccc;
+  /* Trying Basic CSS Animation to change the Masthead color - copied from w3schools.com */
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 5s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-iteration-count: 2; /* Safari 4.0 - 8.0 */
+  -webkit-animation-direction: alternate; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 5s;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+
+#logo {
+  float: left;
+  width: 250px;
+  height: 90px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 90px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  background: #4aaaa5;
+  /* Trying An Animation - copied from w3schools.com*/
+  animation: animated_div 10s 2;
+  -webkit-animation: animated_div 5s 2;
+}
+
+nav {
+  float: right;
+  margin-top: 25px;
+}
+
+nav a {
+  display: inline-block;
+  padding-left: 15px;
+  margin-left: 15px;
+  line-height: 18px;
+  color: #999;
+  text-decoration: none;
+  border-left: 1px solid #efefef;
+}
+
+nav a:first-child {
+  border-left: 0 none;
+}
+
+/* footer */
+
+footer {
+  padding: 30px 0;
+  clear: both;
+  font-size: 12px;
+  color: #ffffff;
+  color: #cccccc;
+  text-align: center;
+  background: #666666;
+  border-top: 8px solid #4aaaa5;
+  height: 50px;
+}
+
+h3, h2 {
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+  line-height: 22px;
+  border-bottom: 2px solid #eeeeee;
+}
+
+/* main */
+
+#main-container {
+  padding-top: 130px;
+  min-height: calc(100vh - 70px);
+}
+
+.main-section {
+  float: left;
+  width: 100%;
+  max-width: 960px;
+  padding: 30px;
+  margin: 0 0 40px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+}
+
+/* portfolio page */
+
+.work {
+  position: relative;
+  float: left;
+  width: 274px;
+  margin: 20px 0 25px;
+  overflow: auto;
+}
+
+.work:nth-child(even) {
+  margin-left: 40px;
+}
+
+.work img {
+  width: 100%;
+  height: 200px;
+  border: 0 none;
+  opacity: 0.8;
+}
+
+.work h3 {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 0;
+  font-weight: 300;
+  line-height: 30px;
+  color: #ffffff;
+  text-align: center;
+  background: #4aaaa5;
+  border-bottom: 0;
+}
+
+/* CSS Animation to cause the navbar to change color */
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  from {background-color: #ffffff;}
+  to {background-color: salmon}
+}
+
+/* Standard syntax */
+@keyframes example {
+  from {background-color: #ffffff;}
+  to {background-color: salmon;}
+}
+
+/* CSS Animation to cause the name in the navbar to spin */
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes animated_div {
+  0% {
+    transform: rotate(360deg);
+    left: 0px;
+    background: aqua;
+  }
+
+  30% {
+    transform: rotate(0deg);
+    left: 500px;
+    background: antiquewhite;
+  }
+ 
+  60% {
+    transform: rotate(360deg);
+    left: 500px;
+    background: aqua;
+  }
+  90% {
+    transform: rotate(0deg);
+    left: 0px;
+    background: antiquewhite;
+  }
+}
+
+/* Standard syntax */
+@keyframes animated_div {
+  0% {
+    transform: rotate(360deg);
+    left: 0px;
+    background: aqua;
+  }
+
+  30% {
+    transform: rotate(0deg);
+    left: 500px;
+    background: antiquewhite;
+  }
+ 
+  60% {
+    transform: rotate(360deg);
+    left: 500px;
+    background: aqua;
+  }
+  90% {
+    transform: rotate(0deg);
+    left: 0px;
+    background: antiquewhite;
+  }
+}
+
+/* Adding the Media Queries */
+/*
+  These rules take effect when the browser's width is either 980px or less.  (DESKTOP)
+*/
+@media screen and (max-width: 980px) 
+{
+  .container {
+    /* Original 960px out of 1325 is approximately 72% of screen so calculated for smaller screen */
+    max-width: 705px; 
+  }
+
+  .main-section {
+    float: left; 
+    width: 65%;
+    padding: 30px; 
+    margin: 0 0 40px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+  }
+
+  .auth-image {
+    width: 150px;
+  }
+
+
+  /* Changing the layout on the Portfolio Page  */
+  .work {
+    width: 175px;
+  }
+
+  .work h3 {
+    padding: 10px;
+    line-height: 10px;
+    font-size: 15px;
+  }
+
+  /* Changing the layout on the Contact Page to remove Bullets on the List Items  */
+  #contact-form ul {
+    padding-inline-start: 0px;
   }
   
-  .work:nth-child(even) {
-    margin-right: 40px;
-  } */
-  
-  /* .work img {
-    width: 100%;
-    border: 0 none;
-    opacity: 0.8;
-  } */
-  
-  .games h3 {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 0;
-    font-weight: 300;
-    line-height: 30px;
-    color: #ffffff;
-    text-align: center;
-    background: #4aaaa5;
-    border-bottom: 0;
+}
+
+/*
+  These rules take effect when the browser's width is either 768px or less.  (TABLET)
+*/
+@media screen and (max-width: 768px) 
+{
+  /* added padding to the right so 'Contact' would be fully displayed */
+  nav {
+    padding-right: 20px;
   }
   
-  /* .auth-image {
-    float: left;
+  .container {
+    max-width: 760px; 
+    width: 100%;
+  }
+
+  .main-section { 
+    width: 100%;
+    margin: 10px 10px 40px;
+  }
+
+  .auth-image {
     width: 200px;
-    height: auto;
+  }
+
+  /* Changing the layout on the Portfolio Page  */
+  .work {
+    width: 300px;
+    margin: 20px 0 5px;
+  }
+
+  .work h3 {
+    padding: 25px;
+    line-height: 10px;
+    font-size: 22px;
+  }
+
+}
+
+/*
+  These rules take effect when the browser's width is either 640px or less.  (PHONE - Landscape)
+*/
+@media screen and (max-width: 640px) 
+{ 
+  #masthead {
+    position: static;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    max-width: 640px; 
+    width: 100%;
+  }
+
+  #logo {
+    float: left;
+    width: 100%;
+  }
+
+  nav {
+    float: none;
     margin-top: 10px;
-    margin-right: 25px;
-  } */
-  
+    margin-left: 140px;
+    margin-bottom: 10px;
+  }
+
+  /* remove the padding from the main-container  */
+  #main-container {
+    padding-top: 0px;
+  }
+
+  .main-section { 
+    width: 100%;
+    padding: 30px;
+  }
+
+  .main-section h1{ 
+    margin-top: 0px;
+  }
+
+  /* adjusted the picture size using the height needed to make the picture fill the screen */
+  .auth-image {
+    width: auto;
+    height: 650px;
+    margin-bottom: 10px;
+  }
+
+  /* Changing the layout on the Portfolio Page  */
+  .work {
+    width: auto;
+    margin: 20px 0 5px;
+  }
+
+  .work:nth-child(even) {
+    margin-right: 0px;
+  }
+
+  .work h3 {
+    padding: 40px;
+  }
+
+}
