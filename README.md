@@ -2,10 +2,9 @@
 *jQuery Game*
 
 ## Description:
-* What is this repo?
-* How does it work?
-* Who will use this repo?
-* What is the goal of this project?
+* This repository contains the games created for the unit 4 assignment.
+* **The repository is deployed via *GitHub Pages* and the index.html default will be a page that allows the user to choose which of the two RPG games they would like to play**
+* This project was designed to highlight the use of jQuery to dynamically update HTML and interact with the user.
 
 # Star Wars RPG
 
