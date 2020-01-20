@@ -9,6 +9,10 @@ var loss = 0;
 // Booleans
 isGameReady = false;
 
+// Audio references
+var audioWin = new Audio("./assets/audio/baddonut.wav");
+var audioLoss = new Audio("./assets/audio/doh.mp3");
+
 // --------------------------------------------------------------------------------------
 // function to initially load the game or reload after a round has been completed
 // --------------------------------------------------------------------------------------
@@ -23,6 +27,12 @@ function reloadGame() {
         donutsFed = 0;
         // add the count to the page
         $("#total-fed").text(donutsFed);
+
+        // add the scoreboard display after a verdict has been determined that will update after each round
+        if (win > 0 || loss > 0) {
+            $("#scoreboard-section").html('<h1>WINS:  ' + win + '  LOSSES:  ' + loss + '</h1>');
+        };
+
         // return true so that the isGameReady variable can be updated
         return true;
     }
@@ -144,17 +154,24 @@ function checkFed() {
         if (donutsFed === donutsNeeded) {
             // update as a win
             win++;
+
+            // Play "Umm...Donuts" Audio
+            audioWin.play();
+
             // show the proper alert based on a win
             // playResults();
             // Needed to add this timeout to allow the display to change before the results were checked
-            setTimeout(function() {playResults()},300);
-            
+            setTimeout(function() {playResults()},300);   
  
         } 
         // check if the guess is more than the amount to match
         else if (donutsFed > donutsNeeded) {
             // update as a loss
             loss++;
+
+            // Play "Doh" Audio
+            audioLoss.play();
+
             // show the proper alert based on a loss
             // playResults(2);
             // Needed to add this timeout to allow the display to change before the results were checked
