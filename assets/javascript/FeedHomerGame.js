@@ -145,7 +145,9 @@ function checkFed() {
             // update as a win
             win++;
             // show the proper alert based on a win
-            playResults();
+            // playResults();
+            // Needed to add this timeout to allow the display to change before the results were checked
+            setTimeout(function() {playResults()},300);
             
  
         } 
@@ -154,7 +156,9 @@ function checkFed() {
             // update as a loss
             loss++;
             // show the proper alert based on a loss
-            playResults(2);
+            // playResults(2);
+            // Needed to add this timeout to allow the display to change before the results were checked
+            setTimeout(function() {playResults(2)},300);
         }
 
     };
