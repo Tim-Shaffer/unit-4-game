@@ -45,7 +45,7 @@ body {
 
 /* change the text color for the messages to show better on the background  */
 #message-section h3 {
-    color: blue;
+    color: orangered; 
 }
 
 /* showing the enemies with a black border and red background */

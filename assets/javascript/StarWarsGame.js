@@ -6,6 +6,7 @@ var characters = [
     Name: "Yoda",
     Image: "./assets/images/Yodatrur.png",
     ID: "Y",
+    LightSaber: "greenyellow;",
     HealthPoints: 120,
     AttackPower: 10,
     CounterAttackPower: 24
@@ -14,6 +15,7 @@ var characters = [
     Name: "Rey",
     Image: "./assets/images/Reyureru.png",
     ID: "R",
+    LightSaber: "aqua",
     HealthPoints: 110,
     AttackPower: 12,
     CounterAttackPower: 20
@@ -22,6 +24,7 @@ var characters = [
     Name: "Darth Vader",
     Image: "./assets/images/Darth_Vader.png",
     ID: "DV",
+    LightSaber: "crimson",
     HealthPoints: 130,
     AttackPower: 10,
     CounterAttackPower: 15
@@ -30,6 +33,7 @@ var characters = [
     Name: "Darth Maul",
     Image: "./assets/images/Darth-Maul.png",
     ID: "DM",
+    LightSaber: "fuchsia",
     HealthPoints: 140,
     AttackPower: 8,
     CounterAttackPower: 20
@@ -185,6 +189,7 @@ function buildPlayer(str, opt=1) {
         attacker.Name = characters[idx].Name;
         attacker.Image = characters[idx].Image;
         attacker.ID = characters[idx].ID;
+        attacker.LightSaber = characters[idx].LightSaber;
         attacker.HealthPoints = characters[idx].HealthPoints;
         attacker.AttackPower = characters[idx].AttackPower;
         attacker.CounterAttackPower = characters[idx].CounterAttackPower;
@@ -347,11 +352,17 @@ function attack() {
         // --------------------------------------------------------------------------------------
         $("#message-section").empty();
 
+        // adding color so each attackers message appears differently
+        $("#message-section").attr("style", 'color: ' + attacker.LightSaber);
+
         // --------------------------------------------------------------------------------------
         // display the message to the page in the message section
         // --------------------------------------------------------------------------------------
         var msgTag = $("<h3>");
         msgTag.text(msg);
+
+        // adding color so each attackers message appears differently
+        msgTag.attr("style", 'color: ' + attacker.LightSaber);
         $("#message-section").append(msgTag);
 
         // --------------------------------------------------------------------------------------
@@ -360,6 +371,8 @@ function attack() {
         if (msg2 > "") {
             msgTag = $("<h3>");
             msgTag.text(msg2);
+            // adding color so each attackers message appears differently
+            msgTag.attr("style", 'color: ' + attacker.LightSaber);
             $("#message-section").append(msgTag);
         };
 
