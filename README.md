@@ -15,10 +15,10 @@
 1. All remaining characters are moved to the *Enemies* section.  The player then chooses an opponent by clicking on an enemies picture.
 1. The enemy selected is moved to the *Defender* section.
 1. The player will now be able to click the attack button. 
-  * Whenever the player clicks attack, their attack power damages the defender. The defender will lose health points.  The health points are displayed below the defender's picture.
-  * If the defender survives the attack, the defender will counter attack.  The player's character will lose health points.  The health points are displayed below the character's picture.
+  1. Whenever the player clicks attack, their attack power damages the defender. The defender will lose health points.  The health points are displayed below the defender's picture.
+  1. If the defender survives the attack, the defender will counter attack.  The player's character will lose health points.  The health points are displayed below the character's picture.
 1. The player will keep hitting the attack button in an effort to defeat the defender.
-  * When the defender's health points are reduced to zero or below, the enemy is defeated and removed from the game.  The player then must choose a new *enemy* to attack.
+  1. When the defender's health points are reduced to zero or below, the enemy is defeated and removed from the game.  The player then must choose a new *enemy* to attack.
 1. The player must then defeat all of the remaining *enemies* in the same manner to win the game.
 1. The player loses the game if their character's health points falls to zero or below.
 
@@ -39,15 +39,15 @@
 1. There will be four donuts on the page.
 1. The player will be shown a random number, Donuts needed to Satisfy.
 1. The player will click an individual donut.  Donuts Fed will be updated by a specific number of donuts.
-  * The game does not show the number of donuts assigned to each donut until that donut is clicked.
-  * The Donuts Fed will be updated with the amount that donut was worth.
-  * The player will have to calculate and remember each donut value to try and feed the correct amount **EXACTLY**
+  1. The game does not show the number of donuts assigned to each donut until that donut is clicked.
+  1. The Donuts Fed will be updated with the amount that donut was worth.
+  1. The player will have to calculate and remember each donut value to try and feed the correct amount **EXACTLY**
 1. The player wins when the Donuts Fed matches the Donuts needed to Satisfy Homer.
-  * An alert message will be triggered.
-  * A sound of Homers appreciation will be triggered.
+  1. An alert message will be triggered.
+  1. A sound of Homers appreciation will be triggered.
 1. The player loses if they feed too many Donuts to Homer.
-  * An alert message will be triggered.
-  * A sound of Homers disappointment will be triggered.
+  1. An alert message will be triggered.
+  1. A sound of Homers disappointment will be triggered.
 1. Clicking the *OK* button on the Alert will trigger a new game to be reloaded.
   1. A new random number will be generated and shown as the **NEW** Donuts needed to Satisfy amount.
   1. Four new, *hidden*, random values will be assigned to the donut images.
