@@ -18,11 +18,94 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Personal Stylesheet -->
-    <link rel="stylesheet" href="./assets/css/FeedHomerStyle.css">
+    <link rel="stylesheet" href="./assets/css/homer_style.css">
 
 </head>
 
 <body>
+
+    <div class="container" id="game-screen">
+
+        <div class="row">
+
+            <!-- Title Information is shown HERE -->
+            <div class="col-sm-12 text-white" id="title">
+                    <div class="container">
+                      <h1 class="display-4">Feed Homer</h1>
+                      <p class="lead">Click the donuts to give homer the EXACT number needed to satisfy him!</p>
+                    </div>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            
+            <div class="col-sm-5 text-white">
+                
+                <div class="container p-3">
+                    <h3>Donuts needed to Satisfy</h3>
+                    <br>
+                    <p class="lead" id="total-needed">
+                    <!-- Add Random Amount HERE -->
+                    </h1>
+                </div>
+
+            </div>
+        
+            
+            <div class="col-sm-5 text-white">
+
+                <div class="container p-3">
+                    <h3>Donuts Fed</h3>
+                    <br>
+                    <p class="lead" id="total-fed">
+                    <!-- Add Total HERE -->
+                    </p>
+                </div> 
+
+            </div>
+            
+
+        </div>
+
+        <div class="row">
+            
+            <div class="col-sm-12 text-white" id="donut-section">
+            
+                <!-- Donuts Go here -->
+                <div class="card-deck">
+                    <div class="card donuts">
+                        <img src="./assets/images/donut.png" class="card-img-top img-thumbnail img-fluid images" alt="Donut" value="0">
+                    </div>
+                    <div class="card donuts">
+                        <img src="./assets/images/donut.png" class="card-img-top img-thumbnail img-fluid images" alt="Donut" value="1">
+                    </div>
+                    <div class="card donuts">
+                        <img src="./assets/images/donut.png" class="card-img-top img-thumbnail img-fluid images" alt="Donut" value="2">
+                    </div>
+                    <div class="card donuts">
+                        <img src="./assets/images/donut.png" class="card-img-top img-thumbnail img-fluid images" alt="Donut" value="3">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            
+            
+            
+            <div class="col-sm-7 text-black" id="scoreboard-section">
+            
+                <!-- Add Scoreboard HERE-->
+
+            </div>
+
+        </div>
+
+        
+    </div>
 
     <!-- Insert External Scripting -->
     <script type="text/javascript" src="./assets/javascript/FeedHomerGame.js"></script>

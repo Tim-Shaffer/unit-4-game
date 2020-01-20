@@ -1,0 +1,29 @@
+/* Body Content Styling */
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-image: url("../images/HomerBackground.jpg"); 
+    max-width: 100%;
+    height: auto; 
+}
+
+
+#title {
+     text-align: left;
+}
+
+.images {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+}
+
+.donuts {
+    max-width: 150px;
+    background-color: transparent;
+    border: none;
+}
+
+.img-thumbnail {
+    border: none;
+}
