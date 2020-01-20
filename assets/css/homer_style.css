@@ -27,3 +27,13 @@ body {
 .img-thumbnail {
     border: none;
 }
+
+#total-needed {
+    text-align: center;
+    font-size: 3em;
+}
+
+#total-fed {
+    text-align: left;
+    font-size: 3em;
+}
