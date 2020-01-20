@@ -37,7 +37,7 @@ function reloadGame() {
 // --------------------------------------------------------------------------------------
 function donutsToSatisfy() {
 
-    // only execute if game is ready to play
+    // only execute if game is not ready to play
     if(!isGameReady) {
         // calculate a number between 19 and 120 
         // -  random provides number from 0 to 1
@@ -58,7 +58,7 @@ function donutsToSatisfy() {
 // --------------------------------------------------------------------------------------
 function setDonutValues() {
         
-    // only execute if game is ready to play
+    // only execute if game is not ready to play
     if(!isGameReady) {
         // reset donuts array to empty
         donuts = [];
@@ -90,11 +90,32 @@ function setDonutValues() {
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
+// function to process when an image is clicked
+// - uses the value from the clicked image as an input variable to determine which index of the array to use
+// --------------------------------------------------------------------------------------
+function donutClicked(idx) {
+
+    // only execute if game is ready to play
+    if (isGameReady) {
+        // gather the value of the donuts array for the provided index and add it to the amount already fed
+        donutsFed += donuts[idx];
+        // find the total-fed id and update the text to the number fed so far
+        $("#total-fed").text(donutsFed);
+    }
+    
+};
+// --------------------------------------------------------------------------------------
+// end of the donutClicked() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
 // This function enacts when the html document has been loaded and is ready
 // --------------------------------------------------------------------------------------
 $(document).ready(function() {
 
     $('body').on('click', '.images', function () { 
+        imgID = parseInt($(this).attr('value'));
+        donutClicked(imgID);
         
     });
 
