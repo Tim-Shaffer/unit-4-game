@@ -109,6 +109,61 @@ function donutClicked(idx) {
 // --------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------
+// function to display the alert for the result
+// - option 1 - display a winning message (default)
+// - option 2 - display a losing message 
+//
+// reset the game to be able to play again
+//
+// --------------------------------------------------------------------------------------
+function playResults(opt=1) {
+    if (opt === 2) {
+        alert("You fed Homer too many Donuts!");
+    } 
+    else {
+        alert("Congratulations! Homer has eaten the right amount of donuts");
+    } 
+
+    isGameReady = false;
+    isGameReady = reloadGame(); 
+
+};
+// --------------------------------------------------------------------------------------
+// end of the playResults() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
+// function to determine how to proceed 
+// - uses the value from the clicked image as an input variable to determine which index of the array to use
+// --------------------------------------------------------------------------------------
+function checkFed() {
+    
+    // only execute if game is ready to play
+    if (isGameReady) {
+        // check if the amounts match exactly
+        if (donutsFed === donutsNeeded) {
+            // update as a win
+            win++;
+            // show the proper alert based on a win
+            playResults();
+            
+ 
+        } 
+        // check if the guess is more than the amount to match
+        else if (donutsFed > donutsNeeded) {
+            // update as a loss
+            loss++;
+            // show the proper alert based on a loss
+            playResults(2);
+        }
+
+    };
+};
+// --------------------------------------------------------------------------------------
+// end of the checkFed() function
+// --------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------
 // This function enacts when the html document has been loaded and is ready
 // --------------------------------------------------------------------------------------
 $(document).ready(function() {
@@ -117,6 +172,9 @@ $(document).ready(function() {
         imgID = parseInt($(this).attr('value'));
         donutClicked(imgID);
         
+        // process the updated amounts 
+        checkFed();
+
     });
 
     // initialize game values and set it ready to play
