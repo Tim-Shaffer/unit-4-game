@@ -1,15 +1,15 @@
 # unit-4-game
 *jQuery Game*
 
-##Description:
+## Description:
 * What is this repo?
 * How does it work?
 * Who will use this repo?
 * What is the goal of this project?
 
-#Star Wars RPG
+# Star Wars RPG
 
-###Description
+### Description
 *Interactive Role Play Game to feature dynamically updated HTML page using jQuery.*
 
 1. When the game starts, the player will choose a character by clicking on the character's picture from the *Choose a character* section. The player will battle as that character for the rest of the game.
@@ -32,9 +32,9 @@
 * **No characters in the game can heal or recover health points.**
 * **Player must select the characters wisely.  Each character can win or lose dependent upon the order they fight the defenders.**
 
-#Feed Homer RPG
+# Feed Homer RPG
 
-###Description
+### Description
 *Interactive Role Play Game to feature dynamically updated HTML page using jQuery.*
 
 1. There will be four donuts on the page.
