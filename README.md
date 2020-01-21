@@ -32,7 +32,7 @@
 1. The player must then defeat all of the remaining *enemies* in the same manner to win the game.
 1. The player loses the game if their character's health points falls to zero or below.
 
-#### Technical Game Notes
+#### Game Notes
 * Each character has their own *Health Points*, *Attack Power*, and *Counter Attack Power*.
 * A players *Attack Power* will increase by it's base *Attack Power* after each attack.
   * **ie.  if the base *Attack Power* is 8, each attack will increase the *Attack Power* by 8 (8, 16, 24, 32, ...)**
@@ -67,7 +67,15 @@
    1. The Donuts Fed will also be reset to **0**
 1. A score-board section will be populated at the end of the first game to keep track of the player's wins and losses.
 
-#### Technical Game Notes
+#### Game Notes
 * The Donuts needed to Satisfy will be a random number between 19 and 120
 * The Donut values will be random numbers between 1 and 12.
 * No two Donuts will share the same value.
+
+# Tech Used
+* HTML
+* CSS
+* JavaScript
+* jQuery
+
+
