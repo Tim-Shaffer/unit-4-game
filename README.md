@@ -24,7 +24,7 @@
 
 ![Image of Default Page Screenshot](/assets/images/index.jpg)
 
-# Star Wars RPG\
+# Star Wars RPG
 * Link directly to the page here:  https://tim-shaffer.github.io/unit-4-game/StarWarsRpg.html
 
 ![Image of Star Wars Game](/assets/images/StarWarsRPG.jpg)
