@@ -16,7 +16,7 @@
 # Star Wars RPG\
 * Link directly to the page here:  https://tim-shaffer.github.io/unit-4-game/StarWarsRpg.html
 
-![Image of Star Wars Game](/assets/images/StarWArsRPG.jpg)
+![Image of Star Wars Game](/assets/images/StarWarsRPG.jpg)
 
 ### Description
 *Interactive Role Play Game to feature dynamically updated HTML page using jQuery.*
