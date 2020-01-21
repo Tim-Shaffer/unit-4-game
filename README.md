@@ -6,6 +6,10 @@
 * **The repository is deployed via *GitHub Pages* and the index.html default will be a page that allows the user to choose which of the two RPG games they would like to play**
 * This project was designed to highlight the use of jQuery to dynamically update HTML and interact with the user.
 
+# Default Page - index.html
+https://tim-shaffer.github.io/unit-4-game/
+![Image of Default Page Screenshot](/assets/images/index.jpg)
+
 # Star Wars RPG
 
 ### Description
