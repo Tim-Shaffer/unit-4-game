@@ -101,23 +101,15 @@ function setDonutValues() {
                     atLeastOneDonutOdd = true;
                 }; 
 
-                // on the last iteration:
+                // on the last iteration (i === 3)
                 // - do we need an odd value? && we still don't have an odd value
-                if (donutsNeededOdd && (i === donuts.length - 1) && !atLeastOneDonutOdd) {
+                if ((i === 3) && donutsNeededOdd && !atLeastOneDonutOdd) {
                     
-                    // can I subtract 1 from the newValue and still be unique to the array - creating an odd in the process
-                    if (donuts.indexOf(newValue - 1) === -1) {
-                        donuts.push(newValue - 1);
-                    }
-                    // can I add 1 from the newValue without going over the max allowed and still be unique to the array - creating an odd in the process
-                    else if (newValue + 1 < 12 && (donuts.indexOf(newValue + 1) === -1)){
-                        donuts.push(newValue + 1);
-                    }
-                    // an odd can not be manipulated so generate a new number by resetting the iterator back 1 causing it to loop again
-                    else {
-                        i--;
-                    }
-
+                    // subtract 1 from the newValue - creating an odd in the process
+                    // this only occurs when we know we don't have any odd values in the array 
+                    // so subtracting 1 still ensures uniqueness and within the range of 1 to 12
+                     donuts.push(newValue--);
+                   
                 }
                 // we have fallen here and either don't need an odd, aren't on the last value, or at least one odd is already available
                 else {
@@ -157,6 +149,7 @@ function donutClicked(idx) {
 // --------------------------------------------------------------------------------------
 // end of the donutClicked() function
 // --------------------------------------------------------------------------------------
+
 
 // --------------------------------------------------------------------------------------
 // function to display the alert for the result
