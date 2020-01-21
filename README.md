@@ -7,6 +7,11 @@
 * JavaScript
 * jQuery
 
+## Contents
+* [Default Page - index.html](https://github.com/Tim-Shaffer/unit-4-game#default-page---indexhtml)
+* [Star Wars RPG](https://github.com/Tim-Shaffer/unit-4-game#star-wars-rpg)
+* [Feed Homer RPG](https://github.com/Tim-Shaffer/unit-4-game#feed-homer-rpg)
+
 ### Description:
 * This repository contains the games created for the unit 4 assignment.
 * **The repository is deployed via *GitHub Pages* and the index.html default will be a page that allows the user to choose which of the two RPG games they would like to play**
