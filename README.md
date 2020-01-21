@@ -7,10 +7,16 @@
 * This project was designed to highlight the use of jQuery to dynamically update HTML and interact with the user.
 
 # Default Page - index.html
-https://tim-shaffer.github.io/unit-4-game/
+* Link directly to the page here:  https://tim-shaffer.github.io/unit-4-game/
+
+*The index page allows for the player to select which of the two RPG games to play and will re-direct to that game via the game links*
+
 ![Image of Default Page Screenshot](/assets/images/index.jpg)
 
-# Star Wars RPG
+# Star Wars RPG\
+* Link directly to the page here:  https://tim-shaffer.github.io/unit-4-game/StarWarsRpg.html
+
+![Image of Star Wars Game](/assets/images/StarWArsRPG.jpg)
 
 ### Description
 *Interactive Role Play Game to feature dynamically updated HTML page using jQuery.*
@@ -36,6 +42,9 @@ https://tim-shaffer.github.io/unit-4-game/
 * **Player must select the characters wisely.  Each character can win or lose dependent upon the order they fight the defenders.**
 
 # Feed Homer RPG
+* Link directly to the page here:  https://tim-shaffer.github.io/unit-4-game/FeedHomer.html
+
+![Image of Feed Homer Game](/assets/images/FeedHomerRPG.jpg)
 
 ### Description
 *Interactive Role Play Game to feature dynamically updated HTML page using jQuery.*
