@@ -1,12 +1,18 @@
 # unit-4-game
 *jQuery Game*
 
-## Description:
+## Tech Used
+* HTML
+* CSS
+* JavaScript
+* jQuery
+
+### Description:
 * This repository contains the games created for the unit 4 assignment.
 * **The repository is deployed via *GitHub Pages* and the index.html default will be a page that allows the user to choose which of the two RPG games they would like to play**
 * This project was designed to highlight the use of jQuery to dynamically update HTML and interact with the user.
 
-# Default Page - index.html
+## Default Page - index.html
 * Link directly to the page here:  https://tim-shaffer.github.io/unit-4-game/
 
 *The index page allows for the player to select which of the two RPG games to play and will re-direct to that game via the game links*
@@ -71,11 +77,3 @@
 * The Donuts needed to Satisfy will be a random number between 19 and 120
 * The Donut values will be random numbers between 1 and 12.
 * No two Donuts will share the same value.
-
-# Tech Used
-* HTML
-* CSS
-* JavaScript
-* jQuery
-
-
