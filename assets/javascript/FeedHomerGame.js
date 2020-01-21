@@ -7,7 +7,9 @@ var win = 0;
 var loss = 0;
 
 // Booleans
-isGameReady = false;
+var isGameReady = false;
+var donutsNeededOdd = false;
+var atLeastOneDonutOdd = false;
 
 // Audio references
 var audioWin = new Audio("./assets/audio/baddonut.wav");
@@ -54,6 +56,15 @@ function donutsToSatisfy() {
         // -  floor takes it downward to the nearest integer and multiplying by 101 sets the upper limit to 101
         // -  add 19 to set the proper range
         donutsNeeded = Math.floor(Math.random() * 101) + 19;
+
+        // adding check of even\odd on donuts needed to determine if we need to have at least one odd donut
+        // if the remainder\modulus of dividing a number by 2 is 0, it is even.  Otherwise, it is odd.
+        if (donutsNeeded % 2 === 0) {
+            donutsNeededOdd = false;
+        }   
+        else {
+            donutsNeededOdd = true;
+        }
         
         // find the total-needed id and update the text to the number needed
         $("#total-needed").text(donutsNeeded);
@@ -73,6 +84,8 @@ function setDonutValues() {
         // reset donuts array to empty
         donuts = [];
         var newValue = 0;
+        // set the Odd donut check to false before the array is populated.
+        atLeastOneDonutOdd = false;
 
         // randomly set the values for the 4 images by updating the array
         for (i=0; i < 4; i++ ) {
@@ -83,16 +96,43 @@ function setDonutValues() {
             newValue = Math.floor(Math.random() * 11) + 1;
             // make sure that each value is unique to the array
             if (donuts.indexOf(newValue) === -1 ) {
-                donuts.push(newValue);
-            }
-            // number was already found in the array so reset 1 so the loop will try again
+                // check to see if the value is Odd if there aren't any that are already odd
+                if (!atLeastOneDonutOdd && !(newValue % 2 === 0)) {
+                    atLeastOneDonutOdd = true;
+                }; 
+
+                // on the last iteration:
+                // - do we need an odd value? && we still don't have an odd value
+                if (donutsNeededOdd && (i === donuts.length - 1) && !atLeastOneDonutOdd) {
+                    
+                    // can I subtract 1 from the newValue and still be unique to the array - creating an odd in the process
+                    if (donuts.indexOf(newValue - 1) === -1) {
+                        donuts.push(newValue - 1);
+                    }
+                    // can I add 1 from the newValue without going over the max allowed and still be unique to the array - creating an odd in the process
+                    else if (newValue + 1 < 12 && (donuts.indexOf(newValue + 1) === -1)){
+                        donuts.push(newValue + 1);
+                    }
+                    // an odd can not be manipulated so generate a new number by resetting the iterator back 1 causing it to loop again
+                    else {
+                        i--;
+                    }
+
+                }
+                // we have fallen here and either don't need an odd, aren't on the last value, or at least one odd is already available
+                else {
+                    donuts.push(newValue);
+                };
+
+            }    
+            // number was already found in the array so reset the iterator back 1 so the loop will try again
             else {
-                i -= 1;
+                i--;
             };
             
         };
 
-    }
+    };
 
 };
 // --------------------------------------------------------------------------------------
